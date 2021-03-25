@@ -518,9 +518,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
+			// TODO 告诉子类刷新内部bean工厂。
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
+			// TODO 准备bean工厂以便在本文中使用。
 			prepareBeanFactory(beanFactory);
 
 			try {
@@ -528,27 +530,35 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				postProcessBeanFactory(beanFactory);
 
 				// Invoke factory processors registered as beans in the context.
+				// TODO 调用Bean工厂后置处理器(默认有五个内部后置处理器)
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// Register bean processors that intercept bean creation.
+				//TODO 注册拦截bean创建的bean处理器。
 				registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.
+				// TODO 初始化容器的消息源
 				initMessageSource();
 
 				// Initialize event multicaster for this context.
+				// TODO 初始化容器广播器
 				initApplicationEventMulticaster();
 
 				// Initialize other special beans in specific context subclasses.
+				// TODO 初始化特定上下文子类中的其他特殊bean。
 				onRefresh();
 
 				// Check for listener beans and register them.
+				// TODO 注册并检查事件监听器
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
+				// TODO 初始化所有非懒加载的单利Bean
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
+				// TODO 发布事件
 				finishRefresh();
 			}
 
@@ -596,6 +606,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		}
 
 		// Initialize any placeholder property sources in the context environment.
+		// TODO 初始化上下文环境任何占位符资源
+		// TODO 默认没有任何实现,可自行扩展
 		initPropertySources();
 
 		// Validate that all properties marked as required are resolvable:
@@ -649,6 +661,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		beanFactory.addPropertyEditorRegistrar(new ResourceEditorRegistrar(this, getEnvironment()));
 
 		// Configure the bean factory with context callbacks.
+		// TODO 配置容器处理器
 		beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
 		beanFactory.ignoreDependencyInterface(EnvironmentAware.class);
 		beanFactory.ignoreDependencyInterface(EmbeddedValueResolverAware.class);
@@ -675,6 +688,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		}
 
 		// Register default environment beans.
+		// TODO 配置默认的环境Bean
 		if (!beanFactory.containsLocalBean(ENVIRONMENT_BEAN_NAME)) {
 			beanFactory.registerSingleton(ENVIRONMENT_BEAN_NAME, getEnvironment());
 		}
@@ -1086,7 +1100,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	protected void assertBeanFactoryActive() {
 		if (!this.active.get()) {
 			if (this.closed.get()) {
-				throw new IllegalStateException(getDisplayName() + " has been closed already");
+				throw new IllegalStateException(getDisplayName() + " has been closed alreUserServiceady");
 			}
 			else {
 				throw new IllegalStateException(getDisplayName() + " has not been refreshed yet");
