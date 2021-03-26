@@ -527,6 +527,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
+				// TODO 扩展 ProcessBeanFactoryPost
 				postProcessBeanFactory(beanFactory);
 
 				// Invoke factory processors registered as beans in the context.
@@ -538,7 +539,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.
-				// TODO 初始化容器的消息源
+				// TODO 初始化容器的消息源(国国际化)
 				initMessageSource();
 
 				// Initialize event multicaster for this context.
@@ -1037,6 +1038,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			}
 
 			// Destroy all cached singletons in the context's BeanFactory.
+			// TODO 销毁上下文BeanFactory中所有缓存的单例。
 			destroyBeans();
 
 			// Close the state of this context itself.

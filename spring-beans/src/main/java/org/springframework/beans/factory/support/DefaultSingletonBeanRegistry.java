@@ -566,6 +566,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 		}
 
 		// Actually destroy the bean now...
+		// TODO 调用 实现了DisposableBean#destroy() 方法
 		if (bean != null) {
 			try {
 				bean.destroy();
