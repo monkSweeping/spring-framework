@@ -2,6 +2,8 @@ package com.mars.bean.initialization;
 
 import com.mars.bean.instantiation.factory.UserFactory;
 import com.mars.bean.instantiation.factory.impl.DefaultUserFactory;
+import com.mars.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 
@@ -18,6 +20,9 @@ import org.springframework.context.annotation.Bean;
  * 最后执行的是 initMethod 指定自定义方法
  */
 public class BeanInitializationDemo {
+
+	@Autowired
+	private UserService userService;
 	
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
@@ -29,8 +34,9 @@ public class BeanInitializationDemo {
 		applicationContext.refresh();
 
 		// TODO 依赖查找
-		UserFactory userFactory = applicationContext.getBean(UserFactory.class);
-		System.out.println(userFactory.createUser());
+		//UserFactory userFactory = applicationContext.getBean(UserFactory.class);
+		UserService userService = applicationContext.getBean(UserService.class);
+		System.out.println(userService);
 
 		// TODO 关闭 Sprig 应用上下文
 		applicationContext.close();

@@ -78,6 +78,7 @@ public class InjectionMetadata {
 		this.checkedElements = checkedElements;
 	}
 
+	// TODO 注入实现方法
 	public void inject(Object target, @Nullable String beanName, @Nullable PropertyValues pvs) throws Throwable {
 		Collection<InjectedElement> checkedElements = this.checkedElements;
 		Collection<InjectedElement> elementsToIterate =
@@ -177,6 +178,7 @@ public class InjectionMetadata {
 			if (this.isField) {
 				Field field = (Field) this.member;
 				ReflectionUtils.makeAccessible(field);
+				// TODO 反射注入
 				field.set(target, getResourceToInject(target, requestingBeanName));
 			}
 			else {

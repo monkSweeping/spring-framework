@@ -822,6 +822,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		// TODO 触发所有非惰性单例bean的初始化。。。
 		for (String beanName : beanNames) {
 			RootBeanDefinition bd = getMergedLocalBeanDefinition(beanName);
+			// TODO 判断当前bd 是否是非抽象的 并且是单利的并且是非懒加载的
 			if (!bd.isAbstract() && bd.isSingleton() && !bd.isLazyInit()) {
 				if (isFactoryBean(beanName)) {
 					Object bean = getBean(FACTORY_BEAN_PREFIX + beanName);
@@ -842,6 +843,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 						}
 					}
 				}
+				// TODO 否则直接获取Bean
 				else {
 					getBean(beanName);
 				}

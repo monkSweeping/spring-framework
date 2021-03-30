@@ -219,10 +219,12 @@ final class PostProcessorRegistrationDelegate {
 		}
 
 		// First, register the BeanPostProcessors that implement PriorityOrdered.
+		// TODO 首先注册 实现了PriorityOrdered 接口的 BeanPostProcessors
 		sortPostProcessors(priorityOrderedPostProcessors, beanFactory);
 		registerBeanPostProcessors(beanFactory, priorityOrderedPostProcessors);
 
 		// Next, register the BeanPostProcessors that implement Ordered.
+		// TODO 然后注册实现了Ordered 接口的 BeanPostProcessors
 		List<BeanPostProcessor> orderedPostProcessors = new ArrayList<>();
 		for (String ppName : orderedPostProcessorNames) {
 			BeanPostProcessor pp = beanFactory.getBean(ppName, BeanPostProcessor.class);
@@ -235,6 +237,7 @@ final class PostProcessorRegistrationDelegate {
 		registerBeanPostProcessors(beanFactory, orderedPostProcessors);
 
 		// Now, register all regular BeanPostProcessors.
+		// TODO 最后注册所有常规的BeanPostProcessors
 		List<BeanPostProcessor> nonOrderedPostProcessors = new ArrayList<>();
 		for (String ppName : nonOrderedPostProcessorNames) {
 			BeanPostProcessor pp = beanFactory.getBean(ppName, BeanPostProcessor.class);

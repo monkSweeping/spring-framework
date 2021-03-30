@@ -501,6 +501,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
 		try {
 			// Give BeanPostProcessors a chance to return a proxy instead of the target bean instance.
+			// TODO 给BeanPostProcessors一个返回代理而不是目标bean实例
 			Object bean = resolveBeforeInstantiation(beanName, mbdToUse);
 			if (bean != null) {
 				return bean;
@@ -552,6 +553,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		if (mbd.isSingleton()) {
 			instanceWrapper = this.factoryBeanInstanceCache.remove(beanName);
 		}
+		// TODO 创建Bean实例
 		if (instanceWrapper == null) {
 			instanceWrapper = createBeanInstance(beanName, mbd, args);
 		}
@@ -1193,12 +1195,14 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		}
 
 		// Preferred constructors for default construction?
+		// TODO 获取构造器
 		ctors = mbd.getPreferredConstructors();
 		if (ctors != null) {
 			return autowireConstructor(beanName, mbd, ctors, null);
 		}
 
 		// No special handling: simply use no-arg constructor.
+		// TODO 无需特殊处理：使用无参构造函数。
 		return instantiateBean(beanName, mbd);
 	}
 
@@ -1369,6 +1373,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		// Give any InstantiationAwareBeanPostProcessors the opportunity to modify the
 		// state of the bean before properties are set. This can be used, for example,
 		// to support styles of field injection.
+		// TODO 在设置属性之前，给任何instantiationwarebeanpostprocessors修改bean状态的机会。例如，这可以用来支持字段注入的样式。
 		boolean continueWithPropertyPopulation = true;
 
 		if (!mbd.isSynthetic() && hasInstantiationAwareBeanPostProcessors()) {

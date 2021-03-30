@@ -243,6 +243,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		Object bean;
 
 		// Eagerly check singleton cache for manually registered singletons.
+		// TODO 从缓存中获取Bean
 		Object sharedInstance = getSingleton(beanName);
 		if (sharedInstance != null && args == null) {
 			if (logger.isTraceEnabled()) {
@@ -823,6 +824,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		}
 		else {
 			// Build default TypeConverter, registering custom editors.
+			// TODO 创建简单的类型转换器
 			SimpleTypeConverter typeConverter = new SimpleTypeConverter();
 			typeConverter.setConversionService(getConversionService());
 			registerCustomEditors(typeConverter);
